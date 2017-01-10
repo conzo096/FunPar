@@ -1,0 +1,15 @@
+Once you have downloaded all the files
+
+Place the FOUR jar files in a library called: UCaPE-J8-G2.4-buildNumber;
+
+on windows the assumed location is C:\UCaPE-J8-G2.4-buildNumber
+
+The repository can be imported directly as an existing project
+into Eclipse running Java-8
+
+with the Groovy-2.4 plugin available from 
+
+http://dist.springsource.org/snapshot/GRECLIPSE/e4.6/
+
+The repository UCaPE-Exercises uses the same library and needs
+to reference the UCAPE-Examples repository

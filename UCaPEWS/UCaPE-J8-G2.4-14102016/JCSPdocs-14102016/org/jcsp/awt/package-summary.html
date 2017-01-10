@@ -1,0 +1,968 @@
+<!--
+
+    Copyright 2003-2015 the original author or authors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<title>org.jcsp.awt (JCSP - CSP for Java)</title>
+<meta name="keywords" content="org.jcsp.awt package">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel ="stylesheet" TYPE="text/css" HREF="../../../stylesheet.css" title="Style">
+<link href="../../../groovy.ico" type="image/x-icon" rel="shortcut icon">
+<link href="../../../groovy.ico" type="image/x-icon" rel="icon">
+<script type="text/javascript">
+function windowTitle()
+{
+    parent.document.title="org.jcsp.awt (JCSP - CSP for Java)";
+}
+</script>
+<noscript>
+</noscript>
+
+</head>
+
+<body class="center" onload="windowTitle();">
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+    <!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+    <!--   -->
+</a>
+<a name="navbar_top_firstrow"><!-- --></a>
+<ul class="navList" title="Navigation">
+    <li><a href="../../../overview-summary.html">Overview</a></li>
+    <li class="navBarCell1Rev">Package</li>
+    <li>Class</li>
+    <li><a href="../../../deprecated-list.html">Deprecated</a></li>
+    <li><a href="../../../index-all.html">Index</a></li>
+    <li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+
+<div class="subNav">
+    <ul class="navList">
+        <li><a href="../../../index.html?org/jcsp/awt/package-summary.html" target="_top">Frames</a></li>
+        <li><a href="package-summary.html" target="_top">No Frames</a></li>
+    </ul>
+</div>
+
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<div class="header">
+    <h1 class="title">Package org.jcsp.awt</h1>
+</div>
+
+
+<h2 title="Package org.jcsp.awt Description" class="title">Package org.jcsp.awt Description</h2>
+<div class="header">
+Each AWT component (e.g. <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Button.html' title='Button'>Button</a>) is mirrored by an <I>active</I>
+org.jcsp.lang.CSProcess (e.g. <a href='../../../org/jcsp/awt/ActiveButton.html' title='ActiveButton'>ActiveButton</a>)
+that works to a channel interface.  GUI events are signalled as output
+messages sent on channels coming from the CSP component.  Each component
+may be dynamically configured by sending it a message on its configuration
+channel.
+<P>
+The JCSP-AWT components may be wired up to any (JCSP) application network.
+This allows a safe and natural approach to GUI building as a (multi-threaded)
+network of communicating processes.
+</div>
+
+
+<div class="contentContainer">
+
+
+    <div class="summary">
+        <ul class="blockList">
+            <li class="blockList">
+                <table border="0" cellpadding="3" cellspacing="0" summary="Interface Summary">
+                    <caption><span>Interface Summary</span><span class="tabEnd">&nbsp;</span></caption>
+                    <tbody>
+                    <tr>
+                        <th class="colFirst" scope="col">Interface</th>
+                        <th class="colLast" scope="col">Description</th>
+                    </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveApplet.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveApplet.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveButton.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveButton.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveCheckbox.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveCheckbox.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveCheckboxMenuItem.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveCheckboxMenuItem.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveChoice.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveChoice.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveComponent.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveComponent.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveContainer.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveContainer.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveDialog.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveDialog.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveFileDialog.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveFileDialog.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveFrame.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveFrame.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveLabel.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveLabel.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveList.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveList.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveMenu.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveMenu.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveMenuItem.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveMenuItem.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActivePanel.Configure.html" title="class in org/jcsp/awt">
+                                    ActivePanel.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveScrollPane.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveScrollPane.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveScrollbar.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveScrollbar.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveTextArea.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveTextArea.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveTextField.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveTextField.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveWindow.Configure.html" title="class in org/jcsp/awt">
+                                    ActiveWindow.Configure
+                                </a></strong>
+                            </td>
+                            <td>This enables general configuration of this component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="Display.html" title="class in org/jcsp/awt">
+                                    Display
+                                </a></strong>
+                            </td>
+                            <td>Objects implementing this interface provide graphics services to a <a href='../../../org/jcsp/lang/CSProcess.html' title='CSProcess'>CSProcess</a>.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.Graphic.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.Graphic
+                                </a></strong>
+                            </td>
+                            <td>This is the interface allowing <I>any</I> set of <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html' title='Graphics'>Graphics</a>
+ operations to be wrapped up in an object and sent down a <a href='../../../org/jcsp/awt/Display.html' title='Display'>Display</a>
+ channel to an <I>Active</I> graphics component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsProtocol.Configure.html" title="class in org/jcsp/awt">
+                                    GraphicsProtocol.Configure
+                                </a></strong>
+                            </td>
+                            <td>This is the interface for general configuration of the graphics component.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="Paintable.html" title="class in org/jcsp/awt">
+                                    Paintable
+                                </a></strong>
+                            </td>
+                            <td><I>Active</I> components may delegate their <TT>paint</TT> and <TT>update</TT>
+ methods to objects implementing this interface.
+ </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </li>
+            </ul>
+        </div>
+    
+
+
+
+    <div class="summary">
+        <ul class="blockList">
+            <li class="blockList">
+                <table border="0" cellpadding="3" cellspacing="0" summary="Class Summary">
+                    <caption><span>Class Summary</span><span class="tabEnd">&nbsp;</span></caption>
+                    <tbody>
+                    <tr>
+                        <th class="colFirst" scope="col">Class</th>
+                        <th class="colLast" scope="col">Description</th>
+                    </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveApplet.html" title="class in org/jcsp/awt">
+                                    ActiveApplet
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/applet/Applet.html' title='Applet'>Applet</a>&lt;TT&gt;java.applet.Applet&lt;/TT&gt;
+ with a channel interface, specialising in the operation
+ of <a href='../../../org/jcsp/lang/CSProcess.html' title='CSProcess'>CSProcess</a> networks as <I>applets</I>.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveButton.html" title="class in org/jcsp/awt">
+                                    ActiveButton
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Button.html' title='Button'>Button</a>&lt;TT&gt;java.awt.Button&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveButtonControl.html" title="class in org/jcsp/awt">
+                                    ActiveButtonControl
+                                </a></strong>
+                            </td>
+                            <td>This is a user-programmable finite state machine for
+ controlling an array of <a href='../../../org/jcsp/awt/ActiveButton.html' title='ActiveButton'>ActiveButton</a>s.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveButtonState.html" title="class in org/jcsp/awt">
+                                    ActiveButtonState
+                                </a></strong>
+                            </td>
+                            <td>A state of the <a href='../../../org/jcsp/awt/ActiveButtonControl.html' title='ActiveButtonControl'>ActiveButtonControl</a> finite state machine.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveCanvas.html" title="class in org/jcsp/awt">
+                                    ActiveCanvas
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Canvas.html' title='Canvas'>Canvas</a>&lt;TT&gt;java.awt.Canvas&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveCheckbox.html" title="class in org/jcsp/awt">
+                                    ActiveCheckbox
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Checkbox.html' title='Checkbox'>Checkbox</a>&lt;TT&gt;java.awt.Checkbox&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveCheckboxMenuItem.html" title="class in org/jcsp/awt">
+                                    ActiveCheckboxMenuItem
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/CheckboxMenuItem.html' title='CheckboxMenuItem'>CheckboxMenuItem</a>&lt;TT&gt;java.awt.CheckboxMenuItem&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveChoice.html" title="class in org/jcsp/awt">
+                                    ActiveChoice
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Choice.html' title='Choice'>Choice</a>&lt;TT&gt;java.awt.Choice&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveClosingFrame.html" title="class in org/jcsp/awt">
+                                    ActiveClosingFrame
+                                </a></strong>
+                            </td>
+                            <td>A specialisation of <a href='../../../org/jcsp/awt/ActiveFrame.html' title='ActiveFrame'>ActiveFrame</a> that forces a <TT>System.exit</TT>
+ upon a <I>Window Closing</I> event.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveComponent.html" title="class in org/jcsp/awt">
+                                    ActiveComponent
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Component.html' title='Component'>Component</a>&lt;TT&gt;java.awt.Component&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveContainer.html" title="class in org/jcsp/awt">
+                                    ActiveContainer
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Container.html' title='Container'>Container</a>&lt;TT&gt;java.awt.Container&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveDialog.html" title="class in org/jcsp/awt">
+                                    ActiveDialog
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Dialog.html' title='Dialog'>Dialog</a>&lt;TT&gt;java.awt.Dialog&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveFileDialog.html" title="class in org/jcsp/awt">
+                                    ActiveFileDialog
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/FileDialog.html' title='FileDialog'>FileDialog</a>&lt;TT&gt;java.awt.FileDialog&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveFrame.html" title="class in org/jcsp/awt">
+                                    ActiveFrame
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Frame.html' title='Frame'>Frame</a>&lt;TT&gt;java.awt.Frame&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveLabel.html" title="class in org/jcsp/awt">
+                                    ActiveLabel
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Label.html' title='Label'>Label</a>&lt;TT&gt;java.awt.Label&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveList.html" title="class in org/jcsp/awt">
+                                    ActiveList
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/List.html' title='List'>List</a>&lt;TT&gt;java.awt.List&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveMenu.html" title="class in org/jcsp/awt">
+                                    ActiveMenu
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Menu.html' title='Menu'>Menu</a>&lt;TT&gt;java.awt.Menu&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveMenuItem.html" title="class in org/jcsp/awt">
+                                    ActiveMenuItem
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/MenuItem.html' title='MenuItem'>MenuItem</a>&lt;TT&gt;java.awt.MenuItem&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActivePanel.html" title="class in org/jcsp/awt">
+                                    ActivePanel
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Panel.html' title='Panel'>Panel</a>&lt;TT&gt;java.awt.Panel&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveScrollPane.html" title="class in org/jcsp/awt">
+                                    ActiveScrollPane
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/ScrollPane.html' title='ScrollPane'>ScrollPane</a>&lt;TT&gt;java.awt.ScrollPane&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveScrollbar.html" title="class in org/jcsp/awt">
+                                    ActiveScrollbar
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Scrollbar.html' title='Scrollbar'>Scrollbar</a>&lt;TT&gt;java.awt.Scrollbar&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveTextArea.html" title="class in org/jcsp/awt">
+                                    ActiveTextArea
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/TextArea.html' title='TextArea'>TextArea</a>&lt;TT&gt;java.awt.TextArea&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveTextEnterArea.html" title="class in org/jcsp/awt">
+                                    ActiveTextEnterArea
+                                </a></strong>
+                            </td>
+                            <td>A specialisation of <a href='../../../org/jcsp/awt/ActiveTextArea.html' title='ActiveTextArea'>ActiveTextArea</a> that writes text to
+ the <TT>event</TT> channel only when <I>ESCAPE</I> is pressed.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveTextEnterField.html" title="class in org/jcsp/awt">
+                                    ActiveTextEnterField
+                                </a></strong>
+                            </td>
+                            <td>A specialisation of <a href='../../../org/jcsp/awt/ActiveTextField.html' title='ActiveTextField'>ActiveTextField</a> that writes text to
+ the <TT>event</TT> channel only when <I>ENTER</I> or <I>ESCAPE</I> is pressed.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveTextField.html" title="class in org/jcsp/awt">
+                                    ActiveTextField
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/TextField.html' title='TextField'>TextField</a>&lt;TT&gt;java.awt.TextField&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveWindow.html" title="class in org/jcsp/awt">
+                                    ActiveWindow
+                                </a></strong>
+                            </td>
+                            <td><a href='http://download.oracle.com/javase/7/docs/api/java/awt/Window.html' title='Window'>Window</a>&lt;TT&gt;java.awt.Window&lt;/TT&gt;
+ with a channel interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="DisplayList.html" title="class in org/jcsp/awt">
+                                    DisplayList
+                                </a></strong>
+                            </td>
+                            <td>This implements the <a href='../../../org/jcsp/awt/Display.html' title='Display'>Display</a> and <a href='../../../org/jcsp/awt/Paintable.html' title='Paintable'>Paintable</a> interfaces and provides
+ a channel-like connection between user processes and an active graphics component.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand
+                                </a></strong>
+                            </td>
+                            <td>This is the tagged protocol interpreted by objects
+ (such as <a href='../../../org/jcsp/awt/DisplayList.html' title='DisplayList'>DisplayList</a>) that implement the <a href='../../../org/jcsp/awt/Display.html' title='Display'>Display</a> interface.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.ClearRect.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.ClearRect
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#clearRect' title='Graphics.clearRect'>Graphics.clearRect</a>&lt;TT&gt;java.awt.Graphics.clearRect&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.ClipRect.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.ClipRect
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#clipRect' title='Graphics.clipRect'>Graphics.clipRect</a>&lt;TT&gt;java.awt.Graphics.clipRect&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.CopyArea.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.CopyArea
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#copyArea' title='Graphics.copyArea'>Graphics.copyArea</a>&lt;TT&gt;java.awt.Graphics.copyArea&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.Draw3DRect.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.Draw3DRect
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#draw3DRect' title='Graphics.draw3DRect'>Graphics.draw3DRect</a>&lt;TT&gt;java.awt.Graphics.draw3DRect&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.DrawArc.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.DrawArc
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#drawArc' title='Graphics.drawArc'>Graphics.drawArc</a>&lt;TT&gt;java.awt.Graphics.drawArc&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.DrawBytes.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.DrawBytes
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#drawBytes' title='Graphics.drawBytes'>Graphics.drawBytes</a>&lt;TT&gt;java.awt.Graphics.drawBytes&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.DrawChars.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.DrawChars
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#drawChars' title='Graphics.drawChars'>Graphics.drawChars</a>&lt;TT&gt;java.awt.Graphics.drawChars&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.DrawImage.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.DrawImage
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#drawImage' title='Graphics.drawImage'>Graphics.drawImage</a>&lt;TT&gt;java.awt.Graphics.drawImage&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.DrawLine.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.DrawLine
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#drawLine' title='Graphics.drawLine'>Graphics.drawLine</a>&lt;TT&gt;java.awt.Graphics.drawLine&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.DrawOval.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.DrawOval
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#drawOval' title='Graphics.drawOval'>Graphics.drawOval</a>&lt;TT&gt;java.awt.Graphics.drawOval&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.DrawPolygon.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.DrawPolygon
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#drawPolygon' title='Graphics.drawPolygon'>Graphics.drawPolygon</a>&lt;TT&gt;java.awt.Graphics.drawPolygon&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.DrawPolyline.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.DrawPolyline
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#drawPolyline' title='Graphics.drawPolyline'>Graphics.drawPolyline</a>&lt;TT&gt;java.awt.Graphics.drawPolyline&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.DrawRect.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.DrawRect
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#drawRect' title='Graphics.drawRect'>Graphics.drawRect</a>&lt;TT&gt;java.awt.Graphics.drawRect&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.DrawRoundRect.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.DrawRoundRect
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#drawRoundRect' title='Graphics.drawRoundRect'>Graphics.drawRoundRect</a>&lt;TT&gt;java.awt.Graphics.drawRoundRect&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.DrawString.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.DrawString
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#drawString' title='Graphics.drawString'>Graphics.drawString</a>&lt;TT&gt;java.awt.Graphics.drawString&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.Fill3DRect.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.Fill3DRect
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#translate' title='Graphics.translate'>Graphics.translate</a>&lt;TT&gt;java.awt.Graphics.translate&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.FillArc.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.FillArc
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#fillArc' title='Graphics.fillArc'>Graphics.fillArc</a>&lt;TT&gt;java.awt.Graphics.fillArc&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.FillOval.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.FillOval
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#fillOval' title='Graphics.fillOval'>Graphics.fillOval</a>&lt;TT&gt;java.awt.Graphics.fillOval&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.FillPolygon.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.FillPolygon
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#fillPolygon' title='Graphics.fillPolygon'>Graphics.fillPolygon</a>&lt;TT&gt;java.awt.Graphics.fillPolygon&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.FillRect.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.FillRect
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#fillRect' title='Graphics.fillRect'>Graphics.fillRect</a>&lt;TT&gt;java.awt.Graphics.fillRect&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.FillRoundRect.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.FillRoundRect
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#fillRoundRect' title='Graphics.fillRoundRect'>Graphics.fillRoundRect</a>&lt;TT&gt;java.awt.Graphics.fillRoundRect&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.General.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.General
+                                </a></strong>
+                            </td>
+                            <td>This is the command object holding a GraphicsCommand.Graphic object
+ implementing an arbitrary set of graphics operations.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.SetClip.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.SetClip
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#setClip' title='Graphics.setClip'>Graphics.setClip</a>&lt;TT&gt;java.awt.Graphics.setClip&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.SetColor.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.SetColor
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#setColor' title='Graphics.setColor'>Graphics.setColor</a>&lt;TT&gt;java.awt.Graphics.setColor&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.SetFont.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.SetFont
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#setFont' title='Graphics.setFont'>Graphics.setFont</a>&lt;TT&gt;java.awt.Graphics.setFont&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.SetXORMode.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.SetXORMode
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#setXORMode' title='Graphics.setXORMode'>Graphics.setXORMode</a>&lt;TT&gt;java.awt.Graphics.setXORMode&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsCommand.Translate.html" title="class in org/jcsp/awt">
+                                    GraphicsCommand.Translate
+                                </a></strong>
+                            </td>
+                            <td>This is the (immutable) command object for
+ <a href='http://download.oracle.com/javase/7/docs/api/java/awt/Graphics.html#translate' title='Graphics.translate'>Graphics.translate</a>&lt;TT&gt;java.awt.Graphics.translate&lt;/TT&gt;.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsProtocol.html" title="class in org/jcsp/awt">
+                                    GraphicsProtocol
+                                </a></strong>
+                            </td>
+                            <td>This is the tagged protocol for use over the <TT>toGraphics</TT>
+ configuration channel of an <I>active</I> graphics component.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsProtocol.General.html" title="class in org/jcsp/awt">
+                                    GraphicsProtocol.General
+                                </a></strong>
+                            </td>
+                            <td>This is a general configuration class for the graphics component.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsProtocol.MakeMISImage.html" title="class in org/jcsp/awt">
+                                    GraphicsProtocol.MakeMISImage
+                                </a></strong>
+                            </td>
+                            <td>This is a configuration class to associate a <TT>java.awt.image.MemoryImageSource</TT>
+ with the graphics component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsProtocol.SetBackground.html" title="class in org/jcsp/awt">
+                                    GraphicsProtocol.SetBackground
+                                </a></strong>
+                            </td>
+                            <td>This is a configuration class for setting the background <TT>java.awt.Color</TT>
+ of the active graphics component.  </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="GraphicsProtocol.SetPaintable.html" title="class in org/jcsp/awt">
+                                    GraphicsProtocol.SetPaintable
+                                </a></strong>
+                            </td>
+                            <td>This is a configuration class to register a <TT>org.jcsp.awt.Paintable</TT> object
+ with the graphics component.  </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </li>
+            </ul>
+        </div>
+    
+
+
+
+    <div class="summary">
+        <ul class="blockList">
+            <li class="blockList">
+                <table border="0" cellpadding="3" cellspacing="0" summary="Exception Summary">
+                    <caption><span>Exception Summary</span><span class="tabEnd">&nbsp;</span></caption>
+                    <tbody>
+                    <tr>
+                        <th class="colFirst" scope="col">Exception</th>
+                        <th class="colLast" scope="col">Description</th>
+                    </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveButtonControl.BadArguments.html" title="class in org/jcsp/awt">
+                                    ActiveButtonControl.BadArguments
+                                </a></strong>
+                            </td>
+                            <td>This gets thrown if a consistency check fails in the <a href='../../../org/jcsp/awt/ActiveButtonControl.html' title='ActiveButtonControl'>ActiveButtonControl</a>
+ constructor.</td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ActiveButtonState.BadArguments.html" title="class in org/jcsp/awt">
+                                    ActiveButtonState.BadArguments
+                                </a></strong>
+                            </td>
+                            <td>This gets thrown if a consistency check fails in the <a href='../../../org/jcsp/awt/ActiveButtonState.html' title='ActiveButtonState'>ActiveButtonState</a>
+ constructor.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </li>
+            </ul>
+        </div>
+    
+
+
+
+
+</div>
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+    <!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+    <!--   -->
+</a>
+    <ul class="navList" title="Navigation">
+        <li><a href="overview-summary.html">Overview</a></li>
+        <li class="navBarCell1Rev">Package</li>
+        <li>Class</li>
+        <li><a href="deprecated-list.html">Deprecated</a></li>
+        <li><a href="index-all.html">Index</a></li>
+        <li><a href="help-doc.html">Help</a></li>
+    </ul>
+</div>
+<div class="subNav">
+    <div>
+        <ul class="navList">
+            <li><a href="index.html?deprecated-list.html" target="_top">Frames</a></li>
+            <li><a href="deprecated-list.html" target="_top">No Frames</a></li>
+        </ul>
+    </div>
+
+    <div class="aboutLanguage"><em>JCSP for Java 1.8 generated 14-10-2016  by Jon Kerridge, Edinburgh Napier University - j dot kerridge at napier dot ac dot uk</em></div>
+    <a name="skip-navbar_bottom">
+        <!--   -->
+    </a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+</body>
+</html>

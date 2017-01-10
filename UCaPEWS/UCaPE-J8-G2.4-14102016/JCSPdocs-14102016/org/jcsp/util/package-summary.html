@@ -1,0 +1,266 @@
+<!--
+
+    Copyright 2003-2015 the original author or authors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<title>org.jcsp.util (JCSP - CSP for Java)</title>
+<meta name="keywords" content="org.jcsp.util package">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel ="stylesheet" TYPE="text/css" HREF="../../../stylesheet.css" title="Style">
+<link href="../../../groovy.ico" type="image/x-icon" rel="shortcut icon">
+<link href="../../../groovy.ico" type="image/x-icon" rel="icon">
+<script type="text/javascript">
+function windowTitle()
+{
+    parent.document.title="org.jcsp.util (JCSP - CSP for Java)";
+}
+</script>
+<noscript>
+</noscript>
+
+</head>
+
+<body class="center" onload="windowTitle();">
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+    <!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+    <!--   -->
+</a>
+<a name="navbar_top_firstrow"><!-- --></a>
+<ul class="navList" title="Navigation">
+    <li><a href="../../../overview-summary.html">Overview</a></li>
+    <li class="navBarCell1Rev">Package</li>
+    <li>Class</li>
+    <li><a href="../../../deprecated-list.html">Deprecated</a></li>
+    <li><a href="../../../index-all.html">Index</a></li>
+    <li><a href="../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+
+<div class="subNav">
+    <ul class="navList">
+        <li><a href="../../../index.html?org/jcsp/util/package-summary.html" target="_top">Frames</a></li>
+        <li><a href="package-summary.html" target="_top">No Frames</a></li>
+    </ul>
+</div>
+
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<div class="header">
+    <h1 class="title">Package org.jcsp.util</h1>
+</div>
+
+
+<h2 title="Package org.jcsp.util Description" class="title">Package org.jcsp.util Description</h2>
+<div class="header">
+By default, channels are zero-buffered and fully synchronised: both a reader
+and a writer have to be ready for a communication to proceed.  Whoever
+gets to the communication point first has to wait for the other party.
+<P>
+This package provides a variety of classes conforming
+to the <a href='../../../org/jcsp/util/ChannelDataStore.html' title='ChannelDataStore'>ChannelDataStore</a> interface.
+These classes can be used as <I>plug-ins</I> to the <TT>static</TT> channel
+<a href='../../../org/jcsp/lang/One2OneChannel.html#create(org.jcsp.util.ChannelDataStore)' title='One2OneChannel.create'>One2OneChannel.create</a>&lt;TT&gt;create&lt;/TT&gt;
+methods to customise its semantics.  Classes are provided for blocking FIFO buffers,
+overwriting buffers (losing either the newest or oldest data) and
+infinite (within the realms of your virtual memory) buffers.
+<P>
+Users may write and use their own implementations of
+the <a href='../../../org/jcsp/util/ChannelDataStore.html' title='ChannelDataStore'>ChannelDataStore</a> interface, but
+great care must be taken to specify its semantics.
+It should not normally be necessary to do this.
+</div>
+
+
+<div class="contentContainer">
+
+
+    <div class="summary">
+        <ul class="blockList">
+            <li class="blockList">
+                <table border="0" cellpadding="3" cellspacing="0" summary="Interface Summary">
+                    <caption><span>Interface Summary</span><span class="tabEnd">&nbsp;</span></caption>
+                    <tbody>
+                    <tr>
+                        <th class="colFirst" scope="col">Interface</th>
+                        <th class="colLast" scope="col">Description</th>
+                    </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ChannelDataStore.html" title="class in org/jcsp/util">
+                                    ChannelDataStore
+                                </a></strong>
+                            </td>
+                            <td>This is the interface for object channel plug-ins that define their buffering
+ characteristics.
+ </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </li>
+            </ul>
+        </div>
+    
+
+
+
+    <div class="summary">
+        <ul class="blockList">
+            <li class="blockList">
+                <table border="0" cellpadding="3" cellspacing="0" summary="Class Summary">
+                    <caption><span>Class Summary</span><span class="tabEnd">&nbsp;</span></caption>
+                    <tbody>
+                    <tr>
+                        <th class="colFirst" scope="col">Class</th>
+                        <th class="colLast" scope="col">Description</th>
+                    </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="Buffer.html" title="class in org/jcsp/util">
+                                    Buffer
+                                </a></strong>
+                            </td>
+                            <td>This is used to create a buffered object channel that never loses data.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="InfiniteBuffer.html" title="class in org/jcsp/util">
+                                    InfiniteBuffer
+                                </a></strong>
+                            </td>
+                            <td>This is used to create a buffered object channel that always accepts and
+ never loses any input.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="OverFlowingBuffer.html" title="class in org/jcsp/util">
+                                    OverFlowingBuffer
+                                </a></strong>
+                            </td>
+                            <td>This is used to create a buffered object channel that always accepts input,
+ discarding its last entered data if full.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="OverWriteOldestBuffer.html" title="class in org/jcsp/util">
+                                    OverWriteOldestBuffer
+                                </a></strong>
+                            </td>
+                            <td>This is used to create a buffered object channel that always accepts input,
+ overwriting its oldest data if full.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="OverWritingBuffer.html" title="class in org/jcsp/util">
+                                    OverWritingBuffer
+                                </a></strong>
+                            </td>
+                            <td>This is used to create a buffered object channel that always accepts input,
+ overwriting its last entered data if full.
+ </td>
+                        </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="ZeroBuffer.html" title="class in org/jcsp/util">
+                                    ZeroBuffer
+                                </a></strong>
+                            </td>
+                            <td>This is used to create a zero-buffered object channel that never loses data.
+ </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </li>
+            </ul>
+        </div>
+    
+
+
+
+
+    <div class="summary">
+        <ul class="blockList">
+            <li class="blockList">
+                <table border="0" cellpadding="3" cellspacing="0" summary="Error Summary">
+                    <caption><span>Error Summary</span><span class="tabEnd">&nbsp;</span></caption>
+                    <tbody>
+                    <tr>
+                        <th class="colFirst" scope="col">Error</th>
+                        <th class="colLast" scope="col">Description</th>
+                    </tr>
+<tr class="altColor">
+                            <td class="colOne">
+                                <strong><a href="BufferSizeError.html" title="class in org/jcsp/util">
+                                    BufferSizeError
+                                </a></strong>
+                            </td>
+                            <td>This is thrown if an attempt is made to create some variety of buffered channel
+ with a zero or negative sized buffer.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </li>
+            </ul>
+        </div>
+    
+
+
+
+</div>
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+    <!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+    <!--   -->
+</a>
+    <ul class="navList" title="Navigation">
+        <li><a href="overview-summary.html">Overview</a></li>
+        <li class="navBarCell1Rev">Package</li>
+        <li>Class</li>
+        <li><a href="deprecated-list.html">Deprecated</a></li>
+        <li><a href="index-all.html">Index</a></li>
+        <li><a href="help-doc.html">Help</a></li>
+    </ul>
+</div>
+<div class="subNav">
+    <div>
+        <ul class="navList">
+            <li><a href="index.html?deprecated-list.html" target="_top">Frames</a></li>
+            <li><a href="deprecated-list.html" target="_top">No Frames</a></li>
+        </ul>
+    </div>
+
+    <div class="aboutLanguage"><em>JCSP for Java 1.8 generated 14-10-2016  by Jon Kerridge, Edinburgh Napier University - j dot kerridge at napier dot ac dot uk</em></div>
+    <a name="skip-navbar_bottom">
+        <!--   -->
+    </a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+</body>
+</html>
