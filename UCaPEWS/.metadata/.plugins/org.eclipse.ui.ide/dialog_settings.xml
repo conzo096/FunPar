@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="C:\Users\40167111\Documents\GitHub\FunPar\UCaPEWS\UCaPE-J8-G2.4-14102016\UCaPE-EclipseProject-14-10-2016.zip"/>
 		<item value="C:\UCaPE-J8-G2.4-14102016\UCaPE-Source-14-10-2016.zip"/>
 		<item value="C:\UCaPE-J8-G2.4-Lib-Zip-14102016.zip"/>
 	</list>
@@ -9,6 +10,7 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\40167111\Documents\GitHub\FunPar\UCaPEWS"/>
 			<item value="C:\UCaPE-J8-G2.4-14102016"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">

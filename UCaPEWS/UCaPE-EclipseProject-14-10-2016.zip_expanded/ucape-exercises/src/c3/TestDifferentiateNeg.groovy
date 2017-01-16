@@ -13,7 +13,7 @@ def testList = [ new GNumbers ( outChannel: N2I.out() ),
                 		          outChannel: I2D.out() ),
                  new DifferentiateNeg ( inChannel:I2D.in(), 
                 		                outChannel:D2P.out() ),
-                 new GPrint ( inChannel: D2P.in(), heading: "Differentiated Numbers" )
+                 new GPrint ( inChannel: D2P.in(), heading: "Differentiated Neg Numbers" )
                ]
 
 new PAR ( testList ).run()                          
