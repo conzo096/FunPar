@@ -16,7 +16,6 @@ class Multiplier implements CSProcess {
       // read in the next value of i
 		i = inChannel.read()
     }
-  //  outChannel.write(i)
   }
 }
 
