@@ -12,12 +12,12 @@
 		<link>
 			<name>.link0</name>
 			<type>2</type>
-			<location>C:/Users/conner/.groovy/greclipse/global_dsld_support</location>
+			<location>C:/Users/40167111/.groovy/greclipse/global_dsld_support</location>
 		</link>
 		<link>
-			<name>.link2</name>
+			<name>.link1</name>
 			<type>2</type>
-			<location>C:/Users/conner/.p2/pool/plugins/org.codehaus.groovy_2.4.8.xx-201701291432-e46/plugin_dsld_support</location>
+			<location>C:/eclipse/plugins/org.codehaus.groovy_2.4.3.xx-201608111517-e46/plugin_dsld_support</location>
 		</link>
 	</linkedResources>
 </projectDescription>
