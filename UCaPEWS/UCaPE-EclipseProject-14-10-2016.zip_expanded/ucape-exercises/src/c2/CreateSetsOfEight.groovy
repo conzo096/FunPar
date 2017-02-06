@@ -5,6 +5,7 @@ import org.jcsp.lang.*
 class CreateSetsOfEight implements CSProcess{
 	
 	def ChannelInput inChannel
+	def actual = []
 	def int setSize = 8
 	void run(){
 		def outList = []
@@ -14,8 +15,10 @@ class CreateSetsOfEight implements CSProcess{
 				// put v into outList and read next input
 				outList[i] = v
 				v = inChannel.read()
+				//actual = actual << v
 			}
 			println " Eight Object is ${outList}"
+			actual.add(outList) // outList
 		}
 		println "Finished"
 	}

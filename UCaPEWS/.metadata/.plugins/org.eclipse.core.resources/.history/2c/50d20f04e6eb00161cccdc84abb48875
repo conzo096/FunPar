@@ -1,0 +1,23 @@
+package c2
+
+import org.jcsp.lang.*
+import org.jcsp.groovy.*
+
+class RunThreeToEight extends GroovyTestCase {
+	
+	void testLists()
+	{
+		def connect1 = Channel.one2one()
+		def connect2 = Channel.one2one()	
+
+		def genSet = new GenerateSetsOfThree ( outChannel: connect1.out())
+		def list =  new ListToStream ( inChannel: connect1.in(),outChannel: connect2.out() )
+		def createSet = new CreateSetsOfEight ( inChannel: connect2.in(), setSize: 8 )
+		
+		def processList = [ genSet,list,createSet]
+		new PAR (processList).run()
+	  	def expected = createSet.actual
+		def actual = createSet.actual
+		assertTrue("hi" == "hi")
+	}
+}
