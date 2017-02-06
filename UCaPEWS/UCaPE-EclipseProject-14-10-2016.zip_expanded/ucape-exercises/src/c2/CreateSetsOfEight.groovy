@@ -11,6 +11,7 @@ class CreateSetsOfEight implements CSProcess{
 		def outList = []
 		def v = inChannel.read()
 		while (v != -1){
+			outList = []
 			for ( i in 0 .. setSize-1 ) {
 				// put v into outList and read next input
 				outList[i] = v
@@ -18,7 +19,7 @@ class CreateSetsOfEight implements CSProcess{
 				//actual = actual << v
 			}
 			println " Eight Object is ${outList}"
-			actual.add(outList) // outList
+			actual = actual << outList // outList
 		}
 		println "Finished"
 	}
