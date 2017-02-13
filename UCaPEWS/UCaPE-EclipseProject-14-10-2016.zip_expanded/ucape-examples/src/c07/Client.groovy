@@ -13,7 +13,7 @@ class Client implements CSProcess{
   def ChannelOutput requestChannel
   def clientNumber   
   def selectList = [ ] 
-   
+  def returnList = [ ]
   void run () {
     def iterations = selectList.size
     println "Client $clientNumber has $iterations values in $selectList"
@@ -22,8 +22,10 @@ class Client implements CSProcess{
       def key = selectList[i]
       requestChannel.write(key)
       def v = receiveChannel.read()
+	  returnList[i] = v
     }
 	
-    println "Client $clientNumber has finished"
+	println "Client $clientNumber has finished \nKey Ordered: ${selectList} \nKey Return: ${returnList}"
+
   }
 }

@@ -30,25 +30,32 @@ class Server implements CSProcess{
 	  
       switch (index) {		  
         case CLIENT :
-		  println "CLIENT + Server${serverID}"
           def key = clientRequest.read()
-          if ( dataMap.containsKey(key) ) 
-            clientSend.write(dataMap[key])          
+          if ( dataMap.containsKey(key) )
+		  { 
+			  println "Server ${serverID} recieved client key ${key}"
+            clientSend.write(dataMap[key])         
+		  } 
           else 
+		  {
+			println "Sending client key ${key} to other server from server ${serverID}"
             thisServerRequest.write(key)
+		  }
           //end if 
           break
         case OTHER_REQUEST :
-		  println "OTHER REQUEST + Server${serverID}"
           def key = otherServerRequest.read()
-          if ( dataMap.containsKey(key) ) 
+          if ( dataMap.containsKey(key) )
+		  {
+			  println " Server ${serverID} recieved client key ${key} from other server"
             otherServerSend.write(dataMap[key])          
+		  }
           else 
             otherServerSend.write(-1)
           //end if 
           break
         case THIS_RECEIVE :
-		  println "THIS_RECEIVE + Server${serverID}"
+		  println "Server ${serverID} receiving request..."
           clientSend.write(thisServerReceive.read() )
           break
       } // end switch              
