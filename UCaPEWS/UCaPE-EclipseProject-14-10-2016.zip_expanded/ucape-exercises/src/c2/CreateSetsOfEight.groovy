@@ -16,7 +16,6 @@ class CreateSetsOfEight implements CSProcess{
 				// put v into outList and read next input
 				outList[i] = v
 				v = inChannel.read()
-				//actual = actual << v
 			}
 			println " Eight Object is ${outList}"
 			actual = actual << outList // outList
