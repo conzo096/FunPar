@@ -1,0 +1,23 @@
+package c09
+
+import org.jcsp.lang.*
+import org.jcsp.groovy.*
+
+class EventMissCheck implements CSProcess
+{
+	def ChannelInput inChannel
+	def ChannelOutput outChannel
+	
+	
+	public void run()
+	{
+		while (true)
+		{
+			// Read in next event. 
+			EventData e = inChannel.read();
+		}
+			
+	} 
+
+}
+ 

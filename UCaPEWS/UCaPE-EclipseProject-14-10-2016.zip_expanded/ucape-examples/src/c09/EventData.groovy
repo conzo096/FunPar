@@ -12,7 +12,7 @@ class EventData implements Serializable, JCSPCopy {
   def int source = 0
   def int data = 0
   def int missed = -1 
-   
+  def int previousNum = -1;
   def copy() {
     def e = new EventData ( source: this.source, 
                             data: this.data, 

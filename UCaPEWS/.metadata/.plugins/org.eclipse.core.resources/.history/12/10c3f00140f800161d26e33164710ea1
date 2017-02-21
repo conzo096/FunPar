@@ -1,0 +1,10 @@
+package c09
+
+import org.jcsp.lang.*
+import org.jcsp.groovy.*
+
+class EventMissCheck implements CSProcess
+{ 
+
+}
+ 

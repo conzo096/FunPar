@@ -1,0 +1,17 @@
+package c09
+
+import org.jcsp.lang.*
+import org.jcsp.groovy.*
+
+class EventMissCheck implements CSProcess
+{
+
+	@Override
+	public void run()
+	{
+		// TODO Auto-generated method stub
+		
+	} 
+
+}
+ 
