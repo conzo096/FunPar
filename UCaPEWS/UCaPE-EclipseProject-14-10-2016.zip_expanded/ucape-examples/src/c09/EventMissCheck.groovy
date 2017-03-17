@@ -16,13 +16,14 @@ class EventMissCheck implements CSProcess
 			// Read in next event. 
 			EventData e = inChannel.read();
 			// Check number of misses match.
-			if(e.data == (e.previousNum + 1))
+			
+			if(e.data == (e.previousOutput + e.missed + 1))
 			{
-				println "Misses is accurate."
+				println "Source ${e.source} Correct: Data: ${e.data} == prevOutput: ${e.previousOutput} + missed: ${e.missed} + 1)"
 			}
 			else
 			{
-				println "Misses does not add up."
+				println "Source ${e.source} incorrect: Data: ${e.data} != prevOutput: ${e.previousOutput} + missed: ${e.missed} + 1) "
 			}
 			
 			// Output e.

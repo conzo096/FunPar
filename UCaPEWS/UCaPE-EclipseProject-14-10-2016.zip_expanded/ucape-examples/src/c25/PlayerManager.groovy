@@ -151,7 +151,8 @@ class PlayerManager implements CSProcess {
 			IPconfig.write(" ")	
 			
 			// main loop
-			while (enroled) {
+			while (enroled)
+			{
 				def chosenPairs = [null, null]
 				createBoard()
 				dList.change (display, 0)

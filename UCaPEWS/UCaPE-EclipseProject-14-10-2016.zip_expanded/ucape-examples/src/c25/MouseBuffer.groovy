@@ -10,7 +10,8 @@ class MouseBuffer implements CSProcess {
 	ChannelInput getPoint
 	ChannelOutput sendPoint
 	
-	void run(){
+	void run()
+	{
 		def alt = new ALT([getPoint, mouseEvent])
 		def preCon = new boolean[2]
 		def GET = 0
@@ -18,16 +19,20 @@ class MouseBuffer implements CSProcess {
 		preCon[1] = true
 		def point
 		
-		while (true){
-			switch ( alt.select(preCon)) {
+		while (true)
+		{
+			switch (alt.select(preCon))
+			{
 				case GET :
 					getPoint.read()
+					
 					sendPoint.write(new MousePoint (point: point))
 					preCon[GET] = false
 					break
 				case 1: // mouse event
 					def mEvent = mouseEvent.read()
-					if (mEvent.getID() == MouseEvent.MOUSE_PRESSED) {
+					if (mEvent.getID() == MouseEvent.MOUSE_PRESSED)
+					{
 						preCon[GET] = true
 						def pointValue = mEvent.getPoint()
 						point = [(int)pointValue.x, (int)pointValue.y]

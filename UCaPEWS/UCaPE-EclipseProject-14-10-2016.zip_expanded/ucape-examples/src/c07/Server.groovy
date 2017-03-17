@@ -33,12 +33,12 @@ class Server implements CSProcess{
           def key = clientRequest.read()
           if ( dataMap.containsKey(key) )
 		  { 
-			  println "Server ${serverID} recieved client key ${key}"
+			 // println "Server ${serverID} recieved client key ${key}"
             clientSend.write(dataMap[key])         
 		  } 
           else 
 		  {
-			println "Sending client key ${key} to other server from server ${serverID}"
+			//println "Sending client key ${key} to other server from server ${serverID}"
             thisServerRequest.write(key)
 		  }
           //end if 
@@ -47,7 +47,7 @@ class Server implements CSProcess{
           def key = otherServerRequest.read()
           if ( dataMap.containsKey(key) )
 		  {
-			  println " Server ${serverID} recieved client key ${key} from other server"
+			 // println " Server ${serverID} recieved client key ${key} from other server"
             otherServerSend.write(dataMap[key])          
 		  }
           else 
@@ -55,7 +55,7 @@ class Server implements CSProcess{
           //end if 
           break
         case THIS_RECEIVE :
-		  println "Server ${serverID} receiving request..."
+		 // println "Server ${serverID} receiving request..."
           clientSend.write(thisServerReceive.read() )
           break
       } // end switch              

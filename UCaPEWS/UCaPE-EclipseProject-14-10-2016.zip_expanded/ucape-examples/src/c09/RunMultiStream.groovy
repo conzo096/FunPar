@@ -22,7 +22,6 @@ def sourcesList = ( 0 ..< sources).collect { i ->
                               minTime: minTimes[i],
                               maxTime: maxTimes[i] ) 
             }
-
 def eventProcess = new EventProcessing ( eventStreams: eventsList,
                                           minTime: 10,
                                           maxTime: 400 )

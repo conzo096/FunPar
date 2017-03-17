@@ -23,7 +23,7 @@ class EventOWBuffer implements CSProcess {
     preCon[GETCHANNEL] = false
     def e = new EventData ()
     def missed = -1
-	
+	def previousOutput = -1
     while (true) {
       def index = owbAlt.priSelect ( preCon )
 	  
@@ -37,8 +37,10 @@ class EventOWBuffer implements CSProcess {
 		  
         case GETCHANNEL:
           def s = getChannel.read()
+		  e.previousOutput = previousOutput
           outChannel.write ( e )
           missed = -1                 // reset the missed count field
+		  previousOutput = e.data
           preCon[GETCHANNEL] = false
           break
 		  

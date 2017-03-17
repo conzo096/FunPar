@@ -15,6 +15,7 @@ class EventHandler implements CSProcess {
   void run () {    
     def get = Channel.one2one()
     def transfer = Channel.one2one()
+	def checkMiss = Channel.one2one()
     def toBuffer = Channel.one2one() 
 	   
     def handlerList = [ new EventReceiver ( eventIn: inChannel, 
@@ -22,7 +23,9 @@ class EventHandler implements CSProcess {
                         new EventOWBuffer ( inChannel: toBuffer.in(), 
                                             getChannel: get.in(),
                                             outChannel: transfer.out() ),
-                        new EventPrompter ( inChannel: transfer.in(), 
+						new EventMissCheck (inChannel: transfer.in(),
+											outChannel: checkMiss.out()),
+                        new EventPrompter ( inChannel: checkMiss.in(), 
                                             getChannel: get.out(),
                                             outChannel: outChannel )
                       ]

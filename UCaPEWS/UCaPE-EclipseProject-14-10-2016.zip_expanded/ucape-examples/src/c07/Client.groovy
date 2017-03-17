@@ -23,9 +23,15 @@ class Client implements CSProcess{
       requestChannel.write(key)
       def v = receiveChannel.read()
 	  returnList[i] = v
+	  
+	  // Check if value returned is 10*key value.
+	  if(key*10 == v)
+		  println "Client ${clientNumber} | Search:${i} key ${key} does return the correct value ${v} (Pass) "
+	  else
+		  println "Client ${clientNumber} | Search:${i} key ${key} does not return the correct value ${v} (Fail)"
     }
+	println "\nClient $clientNumber has finished \nKey Ordered: ${selectList} \nKey Return: ${returnList}"
 	
-	println "Client $clientNumber has finished \nKey Ordered: ${selectList} \nKey Return: ${returnList}"
 
   }
 }

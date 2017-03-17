@@ -41,10 +41,12 @@ class Scale implements CSProcess {
           println "Suspended"
           while ( suspended ) {
 			  
-            switch ( suspendedAlt.priSelect() ) {
+            switch (suspendedAlt.priSelect())
+			{
 				
               case SUSPENDED_INJECT:
-                scaling = injector.read()   //this is the resume signal as well
+			    String inVal = injector.read() 
+                scaling = inVal.toInteger()   //this is the resume signal as well
                 println "Injected scaling is $scaling"
                 suspended = false
                 timeout = timer.read() + DOUBLE_INTERVAL

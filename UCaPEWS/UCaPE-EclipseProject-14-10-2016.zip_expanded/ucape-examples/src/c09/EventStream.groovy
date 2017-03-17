@@ -14,11 +14,12 @@ class EventStream implements CSProcess {
   def int iterations = 10
   def ChannelOutput outChannel
     
-  void run () {
+  void run ()
+   {
     def i = initialValue
-	
-    1.upto(iterations) {
-      def e = new EventData ( source: source, data: i )
+    1.upto(iterations)
+	{ 
+      def e = new EventData ( source: source, data: i)
       outChannel.write(e)
       i = i + 1
     }
