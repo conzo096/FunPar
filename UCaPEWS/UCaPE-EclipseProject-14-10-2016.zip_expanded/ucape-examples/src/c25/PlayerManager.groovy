@@ -109,11 +109,6 @@ class PlayerManager implements CSProcess {
 			}
 		}
 		
-		def outerAlt = new ALT([validPoint, withdrawButton])
-		def innerAlt = new ALT([nextButton, withdrawButton])
-		def NEXT = 0
-		def VALIDPOINT = 0
-		def WITHDRAW = 1
 		createBoard()
 		dList.set(display)
 		IPlabel.write("What is your name?")
@@ -131,6 +126,13 @@ class PlayerManager implements CSProcess {
 		def toController = NetChannel.any2net(toControllerAddr, 50 )
 		def fromController = NetChannel.net2one()
 		def fromControllerLoc = fromController.getLocation()
+		
+		def outerAlt = new ALT([validPoint, withdrawButton,fromController])
+		def innerAlt = new ALT([nextButton, withdrawButton, fromController])
+		def NEXT = 0
+		def VALIDPOINT = 0
+		def WITHDRAW = 1
+		def UPDATEBOARD = 2
 		
 		// connect to game controller
 		IPconfig.write("Now Connected - sending your name to Controller")
@@ -169,14 +171,16 @@ class PlayerManager implements CSProcess {
 					pairsWon[p].write(" " + pData[1])
 				}
 				
-				// now use pairsMap to create the board
+				 //now use pairsMap to create the board
 				def pairLocs = pairsMap.keySet()
 				pairLocs.each {loc ->
 					changePairs(loc[0], loc[1], Color.LIGHT_GRAY, -1)
 				}
 				def currentPair = 0
 				def notMatched = true
-				while ((chosenPairs[1] == null) && (enroled) && (notMatched)) {
+				while ((chosenPairs[1] == null) && (enroled) && (notMatched))
+				{
+					
 					getValidPoint.write (new GetValidPoint( side: side,
 															gap: gap,
 															pairsMap: pairsMap))					
@@ -193,7 +197,10 @@ class PlayerManager implements CSProcess {
 							def pairData = pairsMap.get(vPoint)
 							changePairs(vPoint[0], vPoint[1], pairData[1], pairData[0])
 							def matchOutcome = pairsMatch(pairsMap, chosenPairs)
-							if ( matchOutcome == 2)  {
+							
+							
+							if ( matchOutcome == 2)
+							{
 								nextPairConfig.write("SELECT NEXT PAIR")
 								switch (innerAlt.select()){
 									case NEXT:
@@ -211,8 +218,29 @@ class PlayerManager implements CSProcess {
 										toController.write(new WithdrawFromGame(id: myPlayerId))
 										enroled = false
 										break
+									case UPDATEBOARD:
+										gameDetails = (GameDetails)fromController.read()
+										gameId = gameDetails.gameId
+										IPconfig.write("Playing Game Number - " + gameId)
+										playerMap = gameDetails.playerDetails
+										pairsMap = gameDetails.pairsSpecification
+										playerIds = playerMap.keySet()
+										playerIds.each { p ->
+											def pData = playerMap.get(p)
+											playerNames[p].write(pData[0])
+											pairsWon[p].write(" " + pData[1])
+										}
+										
+										 //now use pairsMap to create the board
+										pairLocs = pairsMap.keySet()
+										pairLocs.each {loc ->
+											changePairs(loc[0], loc[1], Color.LIGHT_GRAY, -1)
+										}
+										break
 								} // end inner switch
-							} else if ( matchOutcome == 1) {
+							} 
+							else if ( matchOutcome == 1)
+							{
 								notMatched = false
 								toController.write(new ClaimPair ( id: myPlayerId,
 												   	   			   gameId: gameId,
@@ -220,6 +248,27 @@ class PlayerManager implements CSProcess {
 																   p2: chosenPairs[1]))
 							}
 							break
+						case UPDATEBOARD:
+							
+							gameDetails = (GameDetails)fromController.read()
+							gameId = gameDetails.gameId
+							IPconfig.write("Playing Game Number - " + gameId)
+							playerMap = gameDetails.playerDetails
+							pairsMap = gameDetails.pairsSpecification
+							playerIds = playerMap.keySet()
+							playerIds.each { p ->
+								def pData = playerMap.get(p)
+								playerNames[p].write(pData[0])
+								pairsWon[p].write(" " + pData[1])
+							}
+							
+							 //now use pairsMap to create the board
+							pairLocs = pairsMap.keySet()
+							pairLocs.each {loc ->
+								changePairs(loc[0], loc[1], Color.LIGHT_GRAY, -1)
+							}
+							break
+						
 					}// end of outer switch	
 				} // end of while getting two pairs
 			} // end of while enrolled loop
