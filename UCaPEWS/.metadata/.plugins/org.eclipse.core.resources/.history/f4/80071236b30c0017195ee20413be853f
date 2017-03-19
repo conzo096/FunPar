@@ -1,0 +1,7 @@
+package c25
+
+class UpdateBoard implements Serializable
+{
+	def selectedCards = [null,null]
+	
+}

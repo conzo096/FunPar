@@ -1,0 +1,8 @@
+package c25
+
+class UpdateBoard implements Serializable
+{
+	def firstPair = null
+	def secondPair = null
+	
+}

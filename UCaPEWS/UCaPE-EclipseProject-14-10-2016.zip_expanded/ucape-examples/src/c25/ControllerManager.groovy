@@ -6,8 +6,6 @@ import org.jcsp.util.*
 import org.jcsp.groovy.*
 import java.awt.*
 import java.awt.Color.*
-import java.awt.Component.BaselineResizeBehavior
-
 import org.jcsp.net2.*;
 import org.jcsp.net2.tcpip.*;
 import org.jcsp.net2.mobile.*;
@@ -33,11 +31,15 @@ class ControllerManager implements CSProcess{
 	int minPairs = 6
 	int maxPairs = 18
 	int boardSize = 6
-	// All current player ID's.
+	int turn = 0
 	
-	
-	void run()
-	{
+	void run(){
+		
+		// For next selection/withdraw.
+		def playerOrder = []
+		def activeChannels = 0
+		
+		
 		def int gap = 5
 		def offset = [gap, gap]
 		int graphicsPos = (side / 2)
@@ -173,8 +175,7 @@ class ControllerManager implements CSProcess{
 		def nPairs = 0
 		def pairsUnclaimed = 0
 		def gameId = 0
-		while (true)
-		{
+		while (true) {
 			statusConfig.write("Creating")
 //			nPairs = generatePairsNumber(minPairs, pairsRange)
 			nPairs = maxPairs
@@ -184,61 +185,72 @@ class ControllerManager implements CSProcess{
 			createPairs (nPairs)
 			statusConfig.write("Running")
 			def running = (pairsUnclaimed != 0)
-			while (running)
-			{
+			while (running){
 				def o = fromPlayers.read()
-				if ( o instanceof EnrolPlayer)
-				{
+				if ( o instanceof EnrolPlayer) {
 					def playerDetails = (EnrolPlayer)o
 					def playerName = playerDetails.name
 					def playerToAddr = playerDetails.toPlayerChannelLocation
 					def playerToChan = NetChannel.one2net(playerToAddr)
 					//println "name: ${playerDetails.name}"
-					if (availablePlayerIds.size() > 0)
-					{
+					if (availablePlayerIds.size() > 0) {
 						currentPlayerId = availablePlayerIds. pop()
-						
 						playerNames[currentPlayerId].write(playerName)
 						pairsWon[currentPlayerId].write(" " + 0)
 						toPlayers[currentPlayerId] = playerToChan 
 						toPlayers[currentPlayerId].write(new EnrolDetails(id: currentPlayerId) )
 						playerMap.put(currentPlayerId, [playerName, 0]) // [name, pairs claimed]
-						
-					}
-					else
-					{
+						// Increase number of active channels.
+						activeChannels++;
+						// Add id to playerList.
+						playerOrder[activeChannels] = currentPlayerId
+						}
+					else {
 						// no new players can join the game
 						playerToChan.write(new EnrolDetails(id: -1))
 					}
-					
-					/* If a player is getting game details,
-					 * Update every player.
-					 * 
-					 */
-				} 
-				else if ( o instanceof GetGameDetails)
-				{
+				} else if ( o instanceof GetGameDetails) {
 					def ggd = (GetGameDetails)o
 					def id = ggd.id
-					def playerIds = playerMap.keySet()
-					for(int i =0; i < playerIds.size();i++)
-					{
-						toPlayers[i].write(new GameDetails( playerDetails: playerMap,
-															pairsSpecification: pairsMap,
-															gameId: gameId))
-					}
-				} 
-				else if ( o instanceof ClaimPair)
+					
+					
+					toPlayers[id].write(new GameDetails( playerDetails: playerMap,
+													 	 pairsSpecification: pairsMap,
+														 gameId: gameId,
+														 turn: turn))
+				}
+				// Called when somebody picks two cards, find out who is next in turn.
+				else if (o instanceof TurnManager)
 				{
+					
+					// Send the message to all connected players, other than the 
+					// player that called the request.
+					
+					for( int i=0; i < activeChannels;i++)
+					{				
+						toPlayers[playerList[i]].write(o)
+					}
+					turn = (turn +1)%activeChannels
+
+				}
+				// Player selected a card, update all player boards.
+				else if (o instanceof UpdateBoard)
+				{
+						for( i in  0..< toPlayers.size())
+						{
+							if(toPlayers[i] != null && i != turn)
+								toPlayers[i].write(o)
+						}
+				}
+				
+				 else if ( o instanceof ClaimPair) {
 					def claimPair = (ClaimPair)o
 					def gameNo = claimPair.gameId
 					def id = claimPair.id
 					def p1 = claimPair.p1
 					def p2 = claimPair.p2
-					if ( gameId == gameNo)
-					{
-						if ((pairsMap.get(p1) != null) )
-						{
+					if ( gameId == gameNo){
+						if ((pairsMap.get(p1) != null) ) {
 							// pair can be claimed
 							//println "before remove of $p1, $p2"
 							//pairsMap.each {println "$it"}
@@ -254,17 +266,34 @@ class ControllerManager implements CSProcess{
 							pairsConfig.write(" "+ pairsUnclaimed)
 							running = (pairsUnclaimed != 0)
 						} 
-						else
-						{
+						else {
 							//println "cannot claim pair: $p1, $p2"
 						}
 					}	
-				}
-				else if (o instanceof WithdrawFromGame)
-				{
+				} else {
 					def withdraw = (WithdrawFromGame)o
 					def id = withdraw.id
-					def playerState = playerMap.get(id)
+					def playerState = playerMap.get(id)	
+			
+					// NEED TO DO HERE.
+					// REMOVE ID FROM PLAYERORDER
+					// RESIZE NEW ARRAY, KEEPING ELEMENTS IN CORRECT ORDER
+					int loc = playerOrder.indexOf(id)
+					
+					playerOrder.remove(id)
+					playerOrder
+					print "$playerOrder.size() \n"
+					// Decrease number of active channels.
+					activeChannels--
+					// increment turn
+					print "Now : $playerOrder \n"
+					turn = (turn +1)%activeChannels
+					for( int i=0; i < activeChannels;i++)
+					{				
+						int chan = playerOrder[i]
+						toPlayers[chan].write(new TurnManager(currentPlayer: turn))
+					}
+					
 					println "Player: ${playerState[0]} claimed ${playerState[1]} pairs"
 					playerNames[id].write("       ")
 					pairsWon[id].write("   ")
@@ -278,3 +307,7 @@ class ControllerManager implements CSProcess{
 		} // end while true		
 	} // end run
 }
+
+
+
+

@@ -1,0 +1,11 @@
+package c25
+
+import java.io.Serializable
+
+// Contains the cards selected and updates every board with them.
+class UpdateBoard implements Serializable
+{
+	def firstCard = null
+	def secondCard = null
+
+}
