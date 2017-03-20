@@ -218,8 +218,7 @@ class PlayerManager implements CSProcess {
 							break
 						case WITHDRAW:	
 							withdrawButton.read()	
-							if(myPlayerId == turn)
-								toController.write(new TurnManager (currentPlayer: myPlayerId))
+							toController.write(new TurnManager (currentPlayer: myPlayerId))
 							toController.write(new WithdrawFromGame(id: myPlayerId))
 							enroled = false
 						break		
@@ -262,8 +261,7 @@ class PlayerManager implements CSProcess {
 										break
 									case WITHDRAW:
 										withdrawButton.read()
-										if(myPlayerId == turn)
-											toController.write(new TurnManager (currentPlayer: myPlayerId))
+										toController.write(new TurnManager (currentPlayer: myPlayerId))
 										toController.write(new WithdrawFromGame(id: myPlayerId))
 										enroled = false
 										break

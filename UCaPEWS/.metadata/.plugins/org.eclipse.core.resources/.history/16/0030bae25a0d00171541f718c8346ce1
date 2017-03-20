@@ -230,7 +230,7 @@ class ControllerManager implements CSProcess{
 					for( int i=0; i < toPlayers.size();i++)
 					{				
 						if(toPlayers[i] != null && i != turn)
-						toPlayers[i].write(o)
+						toPlayers[playerOrder[i]].write(o)
 					}
 					turn = (turn +1)%activeChannels
 
@@ -276,7 +276,38 @@ class ControllerManager implements CSProcess{
 					def withdraw = (WithdrawFromGame)o
 					def id = withdraw.id
 					def playerState = playerMap.get(id)	
+			
+					// NEED TO DO HERE.
+					// REMOVE ID FROM PLAYERORDER
+					// RESIZE NEW ARRAY, KEEPING ELEMENTS IN CORRECT ORDER
+					def newOrder = []
+					def count =0
+					for(int i=0; i < playerOrder.size();i++)
+					{
+						if(playerOrder[i] != id || playerOrder[i] != null)
+						{
+						
+								newOrder[count] = playerOrder[i]
+								count++
+						}
+					}
+					
+					playerOrder.clear()
+					for(int i=0;i< newOrder.size();i++)
+						playerOrder[i] = newOrder[i]
+					// Decrease number of active channels.
 					activeChannels--
+					// increment turn
+					def thisTurn = turn
+					turn = (turn +1)%playerOrder.size()
+					for( int i=0; i < playerOrder.size();i++)
+					{		
+						println "Chan: $chan"		
+						int chan = playerOrder[i]
+						if(toPlayers[chan] != null && chan !=thisTurn )
+							toPlayers[chan].write(new TurnManager(currentPlayer: turn))
+					}
+					
 					println "Player: ${playerState[0]} claimed ${playerState[1]} pairs"
 					playerNames[id].write("       ")
 					pairsWon[id].write("   ")
