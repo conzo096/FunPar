@@ -6,6 +6,8 @@ import org.jcsp.util.*
 import org.jcsp.groovy.*
 import java.awt.*
 import java.awt.Color.*
+import java.awt.Component.BaselineResizeBehavior
+
 import org.jcsp.net2.*;
 import org.jcsp.net2.tcpip.*;
 import org.jcsp.net2.mobile.*;
@@ -200,10 +202,10 @@ class ControllerManager implements CSProcess{
 						toPlayers[currentPlayerId] = playerToChan 
 						toPlayers[currentPlayerId].write(new EnrolDetails(id: currentPlayerId) )
 						playerMap.put(currentPlayerId, [playerName, 0]) // [name, pairs claimed]
-						// Increase number of active channels.
-						activeChannels++;
 						// Add id to playerList.
 						playerOrder[activeChannels] = currentPlayerId
+						// Increase number of active channels.
+						activeChannels++;
 						}
 					else {
 						// no new players can join the game
@@ -226,9 +228,10 @@ class ControllerManager implements CSProcess{
 					// Send the message to all connected players, other than the 
 					// player that called the request.
 					
-					for( int i=0; i < activeChannels;i++)
+					for( int i=0; i < playerOrder.size();i++)
 					{				
-						toPlayers[playerList[i]].write(o)
+						if(toPlayers[playerOrder[i]] != null && playerOrder[i] != turn)
+						toPlayers[playerOrder[i]].write(o)
 					}
 					turn = (turn +1)%activeChannels
 
@@ -278,26 +281,37 @@ class ControllerManager implements CSProcess{
 					// NEED TO DO HERE.
 					// REMOVE ID FROM PLAYERORDER
 					// RESIZE NEW ARRAY, KEEPING ELEMENTS IN CORRECT ORDER
-					int loc = playerOrder.indexOf(id)
+					def newOrder = []
+					def count =0
+					for(int i=0; i < playerOrder.size();i++)
+					{
+						if(playerOrder[i] != id || playerOrder[i] != null)
+						{
+						
+								newOrder[count] = playerOrder[i]
+								count++
+						}
+					}
 					
-					playerOrder.remove(id)
-					playerOrder
-					print "$playerOrder.size() \n"
+					playerOrder.clear()
+					for(int i=0;i< newOrder.size();i++)
+						playerOrder[i] = newOrder[i]
 					// Decrease number of active channels.
 					activeChannels--
 					// increment turn
-					print "Now : $playerOrder \n"
-					turn = (turn +1)%activeChannels
-					for( int i=0; i < activeChannels;i++)
-					{				
+					def thisTurn = turn
+					turn = (turn +1)%playerOrder.size()
+					for( int i=0; i < playerOrder.size();i++)
+					{		
+						println "Chan: $chan"		
 						int chan = playerOrder[i]
-						toPlayers[chan].write(new TurnManager(currentPlayer: turn))
+						if(toPlayers[chan] != null && chan !=thisTurn )
+							toPlayers[chan].write(new TurnManager(currentPlayer: turn))
 					}
 					
 					println "Player: ${playerState[0]} claimed ${playerState[1]} pairs"
 					playerNames[id].write("       ")
 					pairsWon[id].write("   ")
-					toPlayers[id] = null
 					availablePlayerIds << id
 					availablePlayerIds =  availablePlayerIds.sort().reverse()
 				} // end else if chain

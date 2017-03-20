@@ -183,7 +183,6 @@ class PlayerManager implements CSProcess {
 				
 				
 				// now use pairsMap to create the board
-				print "Creating board"
 				def pairLocs = pairsMap.keySet()
 				pairLocs.each {loc ->
 					changePairs(loc[0], loc[1], Color.LIGHT_GRAY, -1)
@@ -192,6 +191,7 @@ class PlayerManager implements CSProcess {
 				def notMatched = true
 				while ((chosenPairs[1] == null) && (enroled) && (notMatched))
 				{
+					print "$turn\n"
 					// Only allow person's whos turn it is to make a move.
 					if(myPlayerId == turn)
 						getValidPoint.write (new GetValidPoint( side: side,
@@ -210,20 +210,17 @@ class PlayerManager implements CSProcess {
 								def pData1 = o.pairData1	
 								changePairs(point, point1, pData1, pData)
 							}
+							// Person has finished turn, break loop.
 							if(o instanceof TurnManager)
+							{
 								notMatched = false
+							}
 							break
 						case WITHDRAW:	
-							withdrawButton.read()
-							if(turn == myPlayerId)
-							{
-								toController.write(new WithdrawFromGame(id: myPlayerId))
-								enroled = false
-							}
-							else
-								IPlabel.write(playerName + "wait your turn!")
-						
-							break		
+							withdrawButton.read()	
+							toController.write(new WithdrawFromGame(id: myPlayerId))
+							enroled = false
+						break		
 						// Deals with player input.				
 						case VALIDPOINT:
 							def vPoint = ((SquareCoords)validPoint.read()).location
@@ -263,14 +260,8 @@ class PlayerManager implements CSProcess {
 										break
 									case WITHDRAW:
 										withdrawButton.read()
-										if(turn == myPlayerId)
-										{
-											toController.write(new WithdrawFromGame(id: myPlayerId))
-											enroled = false
-										}
-										else
-											IPlabel.write(playerName + "wait your turn!")
-										
+										toController.write(new WithdrawFromGame(id: myPlayerId))
+										enroled = false
 										break
 								} // end inner switch
 							}
