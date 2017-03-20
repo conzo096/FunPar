@@ -191,7 +191,6 @@ class PlayerManager implements CSProcess {
 				def notMatched = true
 				while ((chosenPairs[1] == null) && (enroled) && (notMatched))
 				{
-					print "$turn\n"
 					// Only allow person's whos turn it is to make a move.
 					if(myPlayerId == turn)
 						getValidPoint.write (new GetValidPoint( side: side,
@@ -209,6 +208,7 @@ class PlayerManager implements CSProcess {
 								def pData = o.pairData
 								def pData1 = o.pairData1	
 								changePairs(point, point1, pData1, pData)
+
 							}
 							// Person has finished turn, break loop.
 							if(o instanceof TurnManager)
@@ -234,15 +234,15 @@ class PlayerManager implements CSProcess {
 							def pairData = pairsMap.get(vPoint)
 							// Change card on board.
 							changePairs(vPoint[0], vPoint[1], pairData[1], pairData[0])
-							// Send cards to every player.
-							toController.write(new UpdateBoard(pairData: pairData[0],
-															pairData1: pairData[1],
-															vPoint: vPoint[0],
-															vPoint1: vPoint[1]))
-					
 							def matchOutcome = pairsMatch(pairsMap, chosenPairs)
 							if ( matchOutcome == 2)
 							{
+								// Send cards to every player.
+								toController.write(new UpdateBoard(pairData: pairData[0],
+																pairData1: pairData[1],
+																vPoint: vPoint[0],
+																vPoint1: vPoint[1]))
+						
 								nextPairConfig.write("SELECT NEXT PAIR")
 								switch (innerAlt.select()){
 									case NEXT:
@@ -272,12 +272,25 @@ class PlayerManager implements CSProcess {
 							// Found matched pair.
 							else if ( matchOutcome == 1)
 							{
+								// Send cards to every player.
+								toController.write(new UpdateBoard(pairData: pairData[0],
+																pairData1: pairData[1],
+																vPoint: vPoint[0],
+																vPoint1: vPoint[1]))
+						
 								notMatched = false
 								toController.write(new ClaimPair ( id: myPlayerId,
 												   	   			   gameId: gameId,
 																   p1: chosenPairs[0],
 																   p2: chosenPairs[1]))
 							}
+							else
+							// Send cards to every player.
+								toController.write(new UpdateBoard(pairData: pairData[0],
+															pairData1: pairData[1],
+															vPoint: vPoint[0],
+															vPoint1: vPoint[1]))
+					
 							break
 					}// end of outer switch	
 				} // end of while getting two pairs

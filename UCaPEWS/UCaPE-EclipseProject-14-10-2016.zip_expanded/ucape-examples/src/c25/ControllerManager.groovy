@@ -38,7 +38,6 @@ class ControllerManager implements CSProcess{
 	void run(){
 		
 		// For next selection/withdraw.
-		def activeChannels = 0
 		
 		
 		def int gap = 5
@@ -49,7 +48,7 @@ class ControllerManager implements CSProcess{
 		int pairsRange = maxPairs - minPairs
 		
 		def availablePlayerIds = ((maxPlayers-1) .. 0).collect{it}
-		
+		def activeChannels = 0
 		//println "$availablePlayerIds"
 		def generatePairsNumber = { min, range ->
 			def rng = new Random()
@@ -201,10 +200,7 @@ class ControllerManager implements CSProcess{
 						toPlayers[currentPlayerId] = playerToChan 
 						toPlayers[currentPlayerId].write(new EnrolDetails(id: currentPlayerId) )
 						playerMap.put(currentPlayerId, [playerName, 0]) // [name, pairs claimed]
-						// Add id to playerList.
-						playerOrder[activeChannels] = currentPlayerId
-						// Increase number of active channels.
-						activeChannels++;
+						activeChannels++
 						}
 					else {
 						// no new players can join the game
@@ -223,17 +219,29 @@ class ControllerManager implements CSProcess{
 				// Called when somebody picks two cards, find out who is next in turn.
 				else if (o instanceof TurnManager)
 				{
-					
+				
+					def currentPlaying = []
+					int counter = 0
 					// Send the message to all connected players, other than the 
 					// player that called the request.
-					
 					for( int i=0; i < toPlayers.size();i++)
-					{				
+					{			
 						if(toPlayers[i] != null && i != turn)
-						toPlayers[i].write(o)
+						{
+							toPlayers[i].write(o)
+						}
+						if(toPlayers[i] != null)
+						{
+							currentPlaying[counter] = i
+							counter++
+						}
 					}
-					turn = (turn +1)%activeChannels
+					// Broke
+					turn = (turn +1)%currentPlaying.size()
+					turn = currentPlaying[turn]
 
+				
+					
 				}
 				// Player selected a card, update all player boards.
 				else if (o instanceof UpdateBoard)
@@ -276,6 +284,7 @@ class ControllerManager implements CSProcess{
 					def withdraw = (WithdrawFromGame)o
 					def id = withdraw.id
 					def playerState = playerMap.get(id)	
+					toPlayers[id] = null
 					activeChannels--
 					println "Player: ${playerState[0]} claimed ${playerState[1]} pairs"
 					playerNames[id].write("       ")
